@@ -8,11 +8,14 @@ interface FormCardProps {
 
 const Container = styled.div`
 	background-color: #fff;
+	/* border: 2px solid #7e70ff75; */
 	border-radius: 16px;
 	padding: 25px 50px 40px;
+	width: 400px;
 	max-width: 90%;
 	max-height: 90%;
 	box-shadow: 0px 4px 16px 0px #2d2d2d57;
+	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

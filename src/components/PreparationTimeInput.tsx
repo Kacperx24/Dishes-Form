@@ -20,11 +20,6 @@ const Input = styled.input`
 	width: 50px;
 	padding: 12px 8px;
 	text-align: center;
-	&[type='number']::-webkit-inner-spin-button,
-	&[type='number']::-webkit-outer-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	}
 `
 
 const PreparationTimeInput: FC<TimePreparationInputProps> = ({
@@ -72,7 +67,7 @@ const PreparationTimeInput: FC<TimePreparationInputProps> = ({
 
 	useEffect(() => {
 		const { hours, minutes, seconds } = preparationTime
-		setValue('preparationTime', `${hours}:${minutes}:${seconds}`)
+		setValue('preparation_time', `${hours}:${minutes}:${seconds}`)
 	}, [preparationTime, setValue])
 
 	return (
@@ -81,7 +76,7 @@ const PreparationTimeInput: FC<TimePreparationInputProps> = ({
 			<div>
 				<input
 					type='hidden'
-					{...register('preparationTime', {
+					{...register('preparation_time', {
 						required: 'Preparation time is required',
 					})}
 				/>

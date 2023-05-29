@@ -41,5 +41,25 @@ button:active{
 	transform: scale(0.97);
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #cfcfff;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+/* ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+} */
 
 `

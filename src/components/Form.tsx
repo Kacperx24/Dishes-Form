@@ -1,11 +1,12 @@
 import React from 'react'
 import FormCard from './ui/FormCard'
-import NameInput from './NameInput'
 import PreparationTimeInput from './PreparationTimeInput'
 import styled from 'styled-components'
 import TypeSelect from './TypeSelect'
 import { useForm } from 'react-hook-form'
 import { FormData } from '../types'
+import AdditionalFields from './AdditionalFields'
+import InputField from './InputField'
 
 const FormContent = styled.form`
 	/* width: 320px; */
@@ -15,7 +16,7 @@ const FormContent = styled.form`
 	padding: 0 15px;
 `
 const SubmitButton = styled.button`
-	margin: 50px auto 0;
+	margin: 32px auto 0;
 	width: fit-content;
 	border-radius: 8px;
 	font-weight: 500;
@@ -32,21 +33,37 @@ const Form = () => {
 		register,
 		handleSubmit,
 		setValue,
+		watch,
 		formState: { errors },
 	} = useForm<FormData>()
+
+	const typeValue = watch('type')
 
 	const onSubmit = (data: FormData) => console.log(data)
 
 	return (
 		<FormCard title='Create a dish'>
 			<FormContent onSubmit={handleSubmit(onSubmit)}>
-				<NameInput register={register} errors={errors} />
+				<InputField
+					register={register}
+					errors={errors}
+					name='name'
+					errorMessage='Name is required'
+				/>
 				<PreparationTimeInput
 					register={register}
 					errors={errors}
 					setValue={setValue}
 				/>
 				<TypeSelect register={register} errors={errors} />
+				{typeValue && (
+					<AdditionalFields
+						type={typeValue}
+						register={register}
+						errors={errors}
+						watch={watch}
+					/>
+				)}
 				<SubmitButton>Send data</SubmitButton>
 			</FormContent>
 		</FormCard>
