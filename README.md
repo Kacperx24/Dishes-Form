@@ -26,6 +26,9 @@ To run this project locally, please follow these steps:
 ## Technologies used
 
 React
+
 TypeScript
+
 react-hook-form
+
 styled-components
