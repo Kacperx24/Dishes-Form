@@ -12,6 +12,7 @@ import {
 	sendSoupTypeDish,
 } from '../api'
 import useNotification from '../hooks/useNotification'
+import { useState } from 'react'
 
 const FormContent = styled.form`
 	display: flex;
@@ -33,11 +34,18 @@ const SubmitButton = styled.button`
 `
 
 const Form = () => {
+	const [preparationTime, setPreparationTime] = useState({
+		hours: '00',
+		minutes: '00',
+		seconds: '00',
+	})
+
 	const {
 		register,
 		handleSubmit,
 		setValue,
 		watch,
+		reset,
 		formState: { errors },
 	} = useForm<FormData>()
 
@@ -76,6 +84,12 @@ const Form = () => {
 					message: 'Dish has been added successfully',
 					type: 'success',
 				})
+				reset()
+				setPreparationTime({
+					hours: '00',
+					minutes: '00',
+					seconds: '00',
+				})
 			}
 		} catch (error) {
 			console.error(error)
@@ -91,6 +105,8 @@ const Form = () => {
 					register={register}
 					errors={errors}
 					setValue={setValue}
+					preparationTime={preparationTime}
+					setPreparationTime={setPreparationTime}
 				/>
 				<TypeSelect register={register} errors={errors} />
 				{typeValue ? (

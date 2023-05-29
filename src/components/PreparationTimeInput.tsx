@@ -3,10 +3,18 @@ import styled from 'styled-components'
 import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import { FormData } from '../types'
 
-type TimePreparationInputProps = {
+interface PreparationTime {
+	hours: string
+	minutes: string
+	seconds: string
+}
+
+interface TimePreparationInputProps {
 	setValue: UseFormSetValue<FormData>
 	register: UseFormRegister<FormData>
 	errors: FieldValues['errors']
+	preparationTime: PreparationTime
+	setPreparationTime: React.Dispatch<React.SetStateAction<PreparationTime>>
 }
 
 const Unit = styled.span`
@@ -25,13 +33,9 @@ const Input = styled.input`
 const PreparationTimeInput: FC<TimePreparationInputProps> = ({
 	register,
 	setValue,
+	preparationTime,
+	setPreparationTime,
 }) => {
-	const [preparationTime, setPreparationTime] = useState({
-		hours: '00',
-		minutes: '00',
-		seconds: '00',
-	})
-
 	const handleInputChange = (
 		event: React.ChangeEvent<HTMLInputElement>,
 		type: 'hours' | 'minutes' | 'seconds'

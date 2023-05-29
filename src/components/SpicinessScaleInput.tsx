@@ -30,7 +30,7 @@ const SpicinessScaleInput: FC<SpicinessScaleInputProps> = ({
 	register,
 	watch,
 }) => {
-	const spicinessScale = watch('spiciness_scale', 5)
+	const spicinessScale = watch('spiciness_scale', 10)
 
 	return (
 		<SliderWrapper>
@@ -39,7 +39,7 @@ const SpicinessScaleInput: FC<SpicinessScaleInputProps> = ({
 			</SpicinessInfo>
 			<RangeInput
 				type='range'
-				min='0'
+				min='1'
 				max='10'
 				step='1'
 				{...register('spiciness_scale', { required: 'Required' })}
