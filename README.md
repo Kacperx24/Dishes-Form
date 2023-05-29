@@ -25,7 +25,7 @@ To run this project locally, please follow these steps:
 
 2. Navigate to the project directory.
 
-```cd project-directory```
+```cd Dishes-form```
 
 3. Install the dependencies.
 
