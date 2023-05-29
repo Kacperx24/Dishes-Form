@@ -37,12 +37,14 @@ const TypeSelect: FC<TypeSelectProps> = ({ register, errors }) => {
 		<Wrapper>
 			<LabelWrapper>
 				<label>Food type</label>
-				{errors.type ? <ErrorMessage>Required</ErrorMessage> : null}
+				{errors.type ? (
+					<ErrorMessage>{errors.type.message}</ErrorMessage>
+				) : null}
 			</LabelWrapper>
 
 			<SelectField
 				id='type'
-				{...register('type', { required: 'Type is required' })}
+				{...register('type', { required: 'Required' })}
 				defaultValue=''
 			>
 				<option value='' disabled>

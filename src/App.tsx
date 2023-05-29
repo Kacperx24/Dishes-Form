@@ -1,7 +1,8 @@
-import React from 'react'
 import styled from 'styled-components'
+
 import { GlobalStyle } from './theme'
 import Form from './components/Form'
+import NotificationProvider from './context/NotificationContext'
 
 const Container = styled.div`
 	height: 100vh;
@@ -13,12 +14,12 @@ const Container = styled.div`
 
 function App() {
 	return (
-		<>
+		<NotificationProvider>
 			<GlobalStyle />
 			<Container>
 				<Form />
 			</Container>
-		</>
+		</NotificationProvider>
 	)
 }
 

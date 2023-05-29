@@ -11,6 +11,7 @@ import {
 	sendSandwichTypeDish,
 	sendSoupTypeDish,
 } from '../api'
+import useNotification from '../hooks/useNotification'
 
 const FormContent = styled.form`
 	display: flex;
@@ -40,23 +41,52 @@ const Form = () => {
 		formState: { errors },
 	} = useForm<FormData>()
 
+	const { showNotification } = useNotification()
+
 	const typeValue = watch('type')
 
-	const onSubmit = (data: FormData) => {
-		if (data.type === 'pizza') return sendPizzaTypeDish(data)
-		if (data.type === 'soup') return sendSoupTypeDish(data)
-		if (data.type === 'sandwich') return sendSandwichTypeDish(data)
+	const onSubmit = async (data: FormData) => {
+		const {
+			name,
+			preparation_time,
+			type,
+			no_of_slices,
+			diameter,
+			spiciness_scale,
+			slices_of_bread,
+		} = data || {}
+
+		const baseData = { name, preparation_time, type }
+
+		try {
+			let response
+			if (data.type === 'pizza') {
+				response = await sendPizzaTypeDish({
+					...baseData,
+					no_of_slices,
+					diameter,
+				})
+			} else if (data.type === 'soup') {
+				response = await sendSoupTypeDish({ ...baseData, spiciness_scale })
+			} else if (data.type === 'sandwich') {
+				response = await sendSandwichTypeDish({ ...baseData, slices_of_bread })
+			}
+			if (response && response.status === 200) {
+				showNotification({
+					message: 'Dish has been added successfully',
+					type: 'success',
+				})
+			}
+		} catch (error) {
+			console.error(error)
+			showNotification({ message: 'Something went wrong', type: 'error' })
+		}
 	}
 
 	return (
 		<FormCard title='Create a dish'>
 			<FormContent onSubmit={handleSubmit(onSubmit)}>
-				<InputField
-					register={register}
-					errors={errors}
-					name='name'
-					errorMessage='Name is required'
-				/>
+				<InputField register={register} errors={errors} name='name' />
 				<PreparationTimeInput
 					register={register}
 					errors={errors}

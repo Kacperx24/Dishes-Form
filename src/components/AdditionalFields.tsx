@@ -31,7 +31,6 @@ const AdditionalFields: FC<AdditionalFieldsProps> = ({
 					register={register}
 					errors={errors}
 					name='no_of_slices'
-					errorMessage='Number of slices is required'
 					width={50}
 					type='number'
 				/>
@@ -39,7 +38,6 @@ const AdditionalFields: FC<AdditionalFieldsProps> = ({
 					register={register}
 					errors={errors}
 					name='diameter'
-					errorMessage='Diameter is required'
 					width={65}
 					type='number'
 				/>
@@ -55,7 +53,6 @@ const AdditionalFields: FC<AdditionalFieldsProps> = ({
 				register={register}
 				errors={errors}
 				name='slices_of_bread'
-				errorMessage='Slices of bread are required'
 				width={50}
 				type='number'
 			/>

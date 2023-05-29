@@ -9,7 +9,6 @@ type InputFieldProps = {
 	register: UseFormRegister<FormData>
 	errors: FieldValues['errors']
 	name: keyof FormData
-	errorMessage: string
 	width?: number
 	type?: 'number' | 'text'
 }
@@ -33,7 +32,6 @@ const InputField: FC<InputFieldProps> = ({
 	register,
 	errors,
 	name,
-	errorMessage,
 	width = 260,
 	type = 'text',
 }) => {
@@ -44,7 +42,9 @@ const InputField: FC<InputFieldProps> = ({
 		<Wrapper>
 			<LabelWrapper>
 				<label>{capitalizeFirstLetter(name)}</label>
-				{errors[name] ? <ErrorMessage>Required</ErrorMessage> : null}
+				{errors[name] ? (
+					<ErrorMessage>{errors[name].message}</ErrorMessage>
+				) : null}
 			</LabelWrapper>
 			<Input
 				width={width}
@@ -52,7 +52,7 @@ const InputField: FC<InputFieldProps> = ({
 				min={0}
 				step={name === 'diameter' ? 0.1 : 1}
 				{...register(name, {
-					required: errorMessage,
+					required: 'Required',
 				})}
 			/>
 		</Wrapper>

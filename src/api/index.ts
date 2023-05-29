@@ -12,7 +12,7 @@ const sendDish = async (
 				'Content-Type': 'application/json',
 			},
 		})
-		console.log(res)
+		return res
 	} catch (err) {
 		if (axios.isAxiosError(err)) {
 			const serverError = err as AxiosError
@@ -25,7 +25,7 @@ const sendDish = async (
 		} else {
 			console.error(`Network error: ${(err as Error).message}`)
 		}
-		console.error(err)
+		throw err
 	}
 }
 

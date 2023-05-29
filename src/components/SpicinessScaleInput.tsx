@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import styled from 'styled-components'
-import { RegisterOptions, UseFormRegister, UseFormWatch } from 'react-hook-form'
+import { UseFormRegister, UseFormWatch } from 'react-hook-form'
 
 import { FormData } from '../types'
 import RangeInput from './ui/RangeInput'
@@ -42,7 +42,7 @@ const SpicinessScaleInput: FC<SpicinessScaleInputProps> = ({
 				min='0'
 				max='10'
 				step='1'
-				{...register('spiciness_scale', { required: 'Spiciness is required' })}
+				{...register('spiciness_scale', { required: 'Required' })}
 			/>
 		</SliderWrapper>
 	)

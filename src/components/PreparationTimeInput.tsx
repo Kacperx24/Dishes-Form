@@ -77,7 +77,7 @@ const PreparationTimeInput: FC<TimePreparationInputProps> = ({
 				<input
 					type='hidden'
 					{...register('preparation_time', {
-						required: 'Preparation time is required',
+						required: 'Required',
 					})}
 				/>
 				<Input

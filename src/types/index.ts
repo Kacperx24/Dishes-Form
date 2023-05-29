@@ -13,6 +13,7 @@ export interface PizzaTypeData {
 	preparation_time: string
 	type: string
 	no_of_slices: number
+	diameter: number
 }
 
 export interface SoupTypeData {
@@ -25,6 +26,5 @@ export interface SandwichTypeData {
 	name: string
 	preparation_time: string
 	type: string
-	diameter: number
 	slices_of_bread: number
 }
