@@ -8,6 +8,8 @@ App includes the following features:
 - Sending a POST request to the API with the form data
 
 
+
+
 ## Getting started
 
 To run this project locally, please follow these steps:
@@ -29,6 +31,7 @@ To run this project locally, please follow these steps:
 ```npm start```
 
 5. Open your browser and visit http://localhost:3000 to view the application.
+
 
 
 
