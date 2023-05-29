@@ -2,13 +2,10 @@
 
 App includes the following features:
 
-Creating a form with input fields
-
-Implementing form validation to ensure data correctness
-
-Handling the submission of the form
-
-Sending a POST request to the API with the form data
+- Creating a form with input fields
+- Implementing form validation to ensure data correctness
+- Handling the submission of the form
+- Sending a POST request to the API with the form data
 
 
 ## Getting started
@@ -37,10 +34,8 @@ To run this project locally, please follow these steps:
 
 ## Technologies used
 
-React
+- React
+- TypeScript
+- react-hook-form
+- styled-components
 
-TypeScript
-
-react-hook-form
-
-styled-components
