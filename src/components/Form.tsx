@@ -1,4 +1,3 @@
-import React from 'react'
 import FormCard from './ui/FormCard'
 import PreparationTimeInput from './PreparationTimeInput'
 import styled from 'styled-components'
@@ -7,9 +6,13 @@ import { useForm } from 'react-hook-form'
 import { FormData } from '../types'
 import AdditionalFields from './AdditionalFields'
 import InputField from './InputField'
+import {
+	sendPizzaTypeDish,
+	sendSandwichTypeDish,
+	sendSoupTypeDish,
+} from '../api'
 
 const FormContent = styled.form`
-	/* width: 320px; */
 	display: flex;
 	flex-direction: column;
 	gap: 25px;
@@ -39,7 +42,11 @@ const Form = () => {
 
 	const typeValue = watch('type')
 
-	const onSubmit = (data: FormData) => console.log(data)
+	const onSubmit = (data: FormData) => {
+		if (data.type === 'pizza') return sendPizzaTypeDish(data)
+		if (data.type === 'soup') return sendSoupTypeDish(data)
+		if (data.type === 'sandwich') return sendSandwichTypeDish(data)
+	}
 
 	return (
 		<FormCard title='Create a dish'>
@@ -56,14 +63,15 @@ const Form = () => {
 					setValue={setValue}
 				/>
 				<TypeSelect register={register} errors={errors} />
-				{typeValue && (
+				{typeValue ? (
 					<AdditionalFields
 						type={typeValue}
 						register={register}
 						errors={errors}
 						watch={watch}
 					/>
-				)}
+				) : null}
+
 				<SubmitButton>Send data</SubmitButton>
 			</FormContent>
 		</FormCard>

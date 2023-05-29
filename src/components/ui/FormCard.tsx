@@ -10,7 +10,7 @@ const Container = styled.div`
 	background-color: #fff;
 	/* border: 2px solid #7e70ff75; */
 	border-radius: 16px;
-	padding: 25px 50px 40px;
+	padding: 25px 10px 40px;
 	width: 400px;
 	max-width: 90%;
 	max-height: 90%;
@@ -19,6 +19,9 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	@media (min-width: 640px) {
+		padding: 25px 50px 40px;
+	}
 `
 const Title = styled.h1`
 	color: #363636;
