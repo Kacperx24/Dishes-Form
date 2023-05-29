@@ -4,7 +4,6 @@ App includes the following features:
 
 - Creating a form with input fields
 - Implementing form validation to ensure data correctness
-- Handling the submission of the form
 - Sending a POST request to the API with the form data
 
 
